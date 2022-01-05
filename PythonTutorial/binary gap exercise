@@ -1,0 +1,20 @@
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(N):
+    # write your code in Python 3.6
+    binaryN = bin(N)
+    print(str(N) + ' is ' + binaryN + ' in binary')
+    longestTerm = len(binaryN)-2
+    searchterms = []
+    for n in range(longestTerm):
+        searchterms.append('1'+'0'*n+'1')
+    searchterms = searchterms[1:] #not interested in '11'
+
+    longestBinGap = 0 
+    for (iterant, value) in enumerate(searchterms):
+        # print (iterant, value)
+        if value in binaryN:
+            longestBinGap = iterant + 1
+    print('The longest binary gap in ' + str(N) +' is ' + str(longestBinGap))
+    return longestBinGap
